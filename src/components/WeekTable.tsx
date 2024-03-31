@@ -24,8 +24,12 @@ const WeekTable = () => {
                 backgroundColor: "rgba(255,255,255,0.05)",
                 width: "2.5rem",
                 height: "2.5rem",
+                fontSize: "1.5rem",
+                fontWeight: "bold",
               }}
-            ></td>
+            >
+              ＋
+            </td>
           ))}
         </tr>
       </tbody>
