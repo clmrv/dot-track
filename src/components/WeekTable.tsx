@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 import { DATE_FORMAT, getDaysList } from "../utils/dateUtils";
 import { Category, User } from "../model";
+import WeekCategory from "./WeekCategory";
 
 type WeekProps = {
   categories: Category[];
@@ -13,6 +14,7 @@ const WeekTable: React.FC<WeekProps> = (props) => {
     <table>
       <thead>
         <tr>
+          <th></th>
           {week.map((date) => (
             <th key={date.toFormat(DATE_FORMAT)}>
               <div>{date.toFormat("ccc")}</div>
@@ -23,29 +25,14 @@ const WeekTable: React.FC<WeekProps> = (props) => {
       <tbody>
         {props.categories.map((category) => (
           <tr key={category.id}>
-            {week.map((date) => {
-              const dotAtDate = category.dots.find((dot) =>
-                date.hasSame(DateTime.fromJSDate(dot.date), "day")
-              );
-              const dotAtDateUser = props.users.find(
-                (user) => user.id === dotAtDate?.userId
-              );
-              return (
-                <td
-                  key={date.toFormat(DATE_FORMAT)}
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.05)",
-                    width: "2.5rem",
-                    height: "2.5rem",
-                    color: dotAtDateUser?.color,
-                  }}
-                >
-                  {dotAtDate ? "⏺" : ""}
-                </td>
-              );
-            })}
+            <WeekCategory category={category} week={week} users={props.users} />
           </tr>
         ))}
+        <tr>
+          <td colSpan={8} style={{ color: "gray", cursor: "pointer" }}>
+            ＋ New category
+          </td>
+        </tr>
       </tbody>
     </table>
   );

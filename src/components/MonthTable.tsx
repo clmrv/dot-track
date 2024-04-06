@@ -44,8 +44,6 @@ const MonthTable = () => {
                   backgroundColor: `rgba(255,255,255,${
                     date.month === daysInMonth[0].month ? "0.05" : "0.025"
                   })`,
-                  height: "2.5rem",
-                  width: "2.5rem",
                 }}
               ></td>
             ))}
