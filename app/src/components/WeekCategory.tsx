@@ -1,5 +1,5 @@
 import React from "react";
-import { Category, User } from "../model";
+import { Category, User } from "../../../server/src/common/model";
 import { DateTime } from "luxon";
 import { DATE_FORMAT } from "../utils/dateUtils";
 

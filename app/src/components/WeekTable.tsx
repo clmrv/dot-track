@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import { DATE_FORMAT, getDaysList } from "../utils/dateUtils";
-import { Category, User } from "../model";
+import { Category, User } from "../../../server/src/common/model";
 import WeekCategory from "./WeekCategory";
 
 type WeekProps = {
